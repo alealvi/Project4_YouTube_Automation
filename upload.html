@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+
+{% block title %}Upload Video - VideoFlow{% endblock %}
+{% block heading %}Upload New Video{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>Upload Promotional Video</h2>
+    <p>Add your video details and schedule its publication.</p>
+
+    <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+
+        <label>Video Title</label>
+        <input type="text" name="title" placeholder="Enter video title" required>
+
+        <label>Video Description</label>
+        <textarea name="description" rows="5" placeholder="Write video description"></textarea>
+
+        <label>Select Video</label>
+        <input type="file" name="video" accept=".mp4,.mov,.avi,.mkv,.webm" required>
+
+        <label>Schedule Date & Time</label>
+        <input type="datetime-local" name="scheduled_at">
+
+        <button type="submit" class="btn-primary">Upload Video</button>
+
+    </form>
+
+    <p class="note">Supported formats: MP4, MOV, AVI, MKV and WEBM.</p>
+
+</div>
+
+{% endblock %}

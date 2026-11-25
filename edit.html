@@ -1,0 +1,42 @@
+
+{% extends "base.html" %}
+
+{% block title %}Edit Video - VideoFlow{% endblock %}
+{% block heading %}Edit Video{% endblock %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h2>Update Video Details</h2>
+    <p>Change your video information below.</p>
+
+    <form action="{{ url_for('edit', video_id=video.id) }}" method="POST">
+
+        <label>Video Title</label>
+        <input
+            type="text"
+            name="title"
+            value="{{ video.title }}"
+            required
+        >
+
+        <label>Video Description</label>
+        <textarea name="description" rows="5">{{ video.description or '' }}</textarea>
+
+        <label>Schedule Date & Time</label>
+        <input
+            type="datetime-local"
+            name="scheduled_at"
+            value="{{ video.scheduled_at or '' }}"
+        >
+
+        <button type="submit" class="btn-primary">Save Changes</button>
+
+        <a href="{{ url_for('dashboard') }}" class="cancel-link">Cancel</a>
+
+    </form>
+
+</div>
+
+{% endblock %}
